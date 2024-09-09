@@ -33,6 +33,17 @@ class MainActivity : AppCompatActivity() {
         telefoneDoisEt.layoutParams= LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         amb.root.addView(telefoneDoisEt)
 
+        savedInstanceState?.apply {
+            getString(VALOR_TELEFONE_UM)?.let {  // só é executado se esse metodo nao retornar nulo
+                amb.telefoneUmEt.setText(it)
+            }
+            getString(VALOR_TELEFONE_DOIS, "000000000").let {
+                telefoneDoisEt.setText(it)
+            }
+            Log.v(getString(R.string.app_name), "onCreate: Restaurando os dados de instancia")
+        }
+
+
         amb.abraBt.setOnClickListener{
             // Jeito Kotlin para chamar a tela do activity_another.xml
             Intent(this, AnotherActivity::class.java).also {
@@ -54,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // metodo chamado quando a tela for recriado
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    /*override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
 //        savedInstanceState.apply {
@@ -69,8 +80,8 @@ class MainActivity : AppCompatActivity() {
                 telefoneDoisEt.setText(it)
             }
         }
-        Log.v(getString(R.string.app_name), "onRestoreInstanceState: Restaurando os15 dados de instancia")
-    }
+        Log.v(getString(R.string.app_name), "onRestoreInstanceState: Restaurando os dados de instancia")
+    }*/
 
     override fun onStart() {
         super.onStart()
