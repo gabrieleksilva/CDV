@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
 
-        val telefoneDoisEt = EditText(this)
+
         telefoneDoisEt.hint = "Segundo telefone"
         telefoneDoisEt.layoutParams= LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         amb.root.addView(telefoneDoisEt)
